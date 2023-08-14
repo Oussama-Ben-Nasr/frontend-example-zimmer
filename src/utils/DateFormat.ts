@@ -3,7 +3,11 @@ export function timestampToString(timestamp: number, language?: string, options?
 }
 
 export function timestampToDate(timestamp: number, language?: string): string {
-    return timestampToString(timestamp, language, {month: '2-digit', day: '2-digit'});
+    if (language === 'en-US') {
+        return timestampToString(timestamp, language, {month: 'numeric', day: 'numeric'});
+    } else {
+        return timestampToString(timestamp, language, {month: '2-digit', day: '2-digit'});
+    }
 }
 
 export function timestampToTime(timestamp: number, language?: string): string {
